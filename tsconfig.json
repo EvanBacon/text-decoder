@@ -1,8 +1,10 @@
 {
   "extends": "expo-module-scripts/tsconfig.base",
   "compilerOptions": {
-    "target": "es2019",
-    "module": "commonjs",
+    "declarationMap": true,
+    "sourceMap": false,
+    "inlineSources": false,
+    "emitDeclarationOnly": true,
     "outDir": "./build"
   },
   "include": ["./src"],

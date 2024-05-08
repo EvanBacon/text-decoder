@@ -1,3 +1,5 @@
+import "../install";
+
 describe("TextDecoder", () => {
   // https://github.com/inexorabletash/text-encoding/blob/master/test/test-big5.js
 

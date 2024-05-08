@@ -8,7 +8,12 @@ import { polyfillGlobal as installGlobal } from "react-native/Libraries/Utilitie
 const BUILTIN_SYMBOL = Symbol.for("expo.builtin");
 
 // Prevent installing in server runtimes that target native platforms, e.g. Expo RSC.
-if (typeof window !== "undefined" && !("TextDecoder" in window)) {
+
+if (
+  (typeof globalThis !== "undefined" && !("TextDecoder" in globalThis)) ||
+  // Always polyfill in test environments
+  typeof expect !== "undefined"
+) {
   function addBuiltinSymbol(obj: object) {
     Object.defineProperty(obj, BUILTIN_SYMBOL, {
       value: true,
@@ -21,5 +26,5 @@ if (typeof window !== "undefined" && !("TextDecoder" in window)) {
   function install(name: string, getValue: () => any) {
     installGlobal(name, () => addBuiltinSymbol(getValue()));
   }
-  install("TextDecoder", () => require("./TextDecoder").TextDecoder);
+  install("TextDecoder", () => require("./index").TextDecoder);
 }
