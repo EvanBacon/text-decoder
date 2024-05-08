@@ -1,0 +1,34 @@
+{
+  "name": "@bacons/text-decoder",
+  "version": "0.0.0",
+  "description": "A light-weight TextDecoder polyfill for React Native Hermes that only supports utf-8",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test",
+    "prepare": "expo-module prepare",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evanbacon/text-decoder-polyfill.git"
+  },
+  "peerDependencies": {
+    "react-native": "*"
+  },
+  "keywords": [
+    "expo"
+  ],
+  "author": "Evan Bacon",
+  "license": "MIT",
+  "jest": {
+    "preset": "expo-module-scripts"
+  },
+  "devDependencies": {
+    "expo-module-scripts": "^3.5.1",
+    "react-native": "~0.74.1"
+  }
+}
