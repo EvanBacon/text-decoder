@@ -9,3 +9,7 @@ import "@bacons/text-decoder/install";
 ```
 
 Supports web, ios, android, server, and the upcoming Expo React Server environment for native platforms.
+
+The implementation is a fork of [`text-encoding`](https://github.com/inexorabletash/text-encoding/blob/3f330964c0e97e1ed344c2a3e963f4598610a7ad/lib/encoding.js#L1) with all legacy encodings, and TextEncoder removed.
+
+The tests were ported over too to ensure everything works as described.
