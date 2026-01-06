@@ -1,17 +1,46 @@
-# @bacons/text-decoder
+# @ably/text-decoder
 
-> This is now in Expo SDK 52 https://docs.expo.dev/versions/v52.0.0/sdk/encoding/
+A lightweight TextDecoder polyfill for React Native Hermes that only supports UTF-8.
 
-In Expo SDK 51 (React Native 74), Hermes supports TextEncoder natively but not TextDecoder. This library provides a TextDecoder implementation for Hermes that only supports UTF-8 (all legacy encodings are removed for bundle size).
+The implementation is a fork of [`text-encoding`](https://github.com/EvanBacon/text-encoding/) without dependencies, built as a standalone library with both CommonJS and ES module support.
 
-You can install it on the global with:
+## Installation
 
-```js
-import "@bacons/text-decoder/install";
+```bash
+npm install @ably/text-decoder
 ```
 
-Supports web, ios, android, server, and the upcoming Expo React Server environment for native platforms.
+## Usage
 
-The implementation is a fork of [`text-encoding`](https://github.com/inexorabletash/text-encoding/blob/3f330964c0e97e1ed344c2a3e963f4598610a7ad/lib/encoding.js#L1) with all legacy encodings, and TextEncoder removed.
+```javascript
+// ESM
+import { TextDecoder } from '@ably/text-decoder';
 
-The tests were ported over too to ensure everything works as described.
+// CommonJS
+const { TextDecoder } = require('@ably/text-decoder');
+
+// Use the polyfill
+const decoder = new TextDecoder('utf-8');
+const text = decoder.decode(new Uint8Array([72, 101, 108, 108, 111])); // "Hello"
+```
+
+## Features
+
+- ✅ Lightweight UTF-8 TextDecoder implementation
+- ✅ Supports both CommonJS and ES modules
+- ✅ Zero dependencies
+- ✅ TypeScript type definitions included
+- ✅ Tested with Vitest
+
+## Development
+
+```bash
+# Install dependencies
+npm install
+
+# Run tests
+npm test
+
+# Build the library
+npm run build
+```

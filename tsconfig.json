@@ -1,12 +1,19 @@
 {
-  "extends": "expo-module-scripts/tsconfig.base",
   "compilerOptions": {
+    "target": "ES2017",
+    "module": "ESNext",
+    "lib": ["ES2017"],
+    "moduleResolution": "bundler",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
     "declarationMap": true,
     "sourceMap": false,
-    "inlineSources": false,
-    "emitDeclarationOnly": true,
-    "outDir": "./build"
+    "inlineSources": false
   },
-  "include": ["./src"],
-  "exclude": ["**/__mocks__/*", "**/__tests__/*"]
+  "include": ["src"],
+  "exclude": ["**/__mocks__", "**/__tests__", "node_modules", "build"]
 }

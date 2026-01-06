@@ -1,11 +1,6 @@
-import "../install";
+import { TextDecoder } from "../index";
 
 describe("TextDecoder", () => {
-  // https://github.com/inexorabletash/text-encoding/blob/master/test/test-big5.js
-
-  it(`uses the Expo built-in APIs`, () => {
-    expect(TextDecoder[Symbol.for("expo.builtin")]).toBe(true);
-  });
 
   // https://github.com/inexorabletash/text-encoding/blob/3f330964c0e97e1ed344c2a3e963f4598610a7ad/test/test-misc.js#L34C1-L47C18
   it(`has expected attributes`, () => {

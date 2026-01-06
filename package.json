@@ -1,44 +1,54 @@
 {
-  "name": "@bacons/text-decoder",
-  "version": "0.0.0",
+  "name": "@ably/text-decoder",
+  "version": "1.0.0",
   "description": "A light-weight TextDecoder polyfill for React Native Hermes that only supports utf-8",
-  "types": "build/index.d.ts",
-  "main": "src/index.ts",
-  "sideEffects": true,
+  "type": "module",
+  "types": "./build/index.d.ts",
+  "main": "./build/index.cjs",
+  "module": "./build/index.js",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./build/index.d.ts",
+        "default": "./build/index.js"
+      },
+      "require": {
+        "types": "./build/index.d.cts",
+        "default": "./build/index.cjs"
+      }
+    }
+  },
+  "sideEffects": false,
   "scripts": {
-    "build": "expo-module build",
-    "clean": "expo-module clean",
-    "lint": "expo-module lint",
-    "test": "expo-module test",
-    "prepare": "expo-module prepare",
-    "prepublishOnly": "expo-module prepublishOnly",
-    "expo-module": "expo-module"
+    "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:types",
+    "build:esm": "tsc --project tsconfig.esm.json",
+    "build:cjs": "tsc --project tsconfig.cjs.json && mv build/cjs/index.js build/index.cjs && rm -rf build/cjs",
+    "build:types": "tsc --project tsconfig.types.json && cp build/types/index.d.ts build/index.d.ts && cp build/types/index.d.ts build/index.d.cts && rm -rf build/types",
+    "clean": "rm -rf build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build"
   },
   "files": [
-    "install.js",
     "build",
     "src",
     "!**/__tests__"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/evanbacon/text-decoder-polyfill.git"
-  },
-  "peerDependencies": {
-    "react-native": "*"
+    "url": "https://github.com/ably-fork/text-decoder.git"
   },
   "keywords": [
-    "expo"
+    "text-decoder",
+    "utf-8",
+    "polyfill",
+    "react-native"
   ],
-  "author": "Evan Bacon",
+  "author": "Ably",
   "license": "MIT",
-  "jest": {
-    "preset": "expo-module-scripts/ios"
-  },
   "devDependencies": {
-    "expo": "^51.0.0",
-    "expo-module-scripts": "^3.5.1",
-    "jest": "^29.7.0",
-    "react-native": "~0.74.1"
+    "@types/node": "^20.0.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.2.0"
   }
 }
